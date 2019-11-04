@@ -360,7 +360,7 @@
 
       function getqrcode() {
         $.ajax({
-          url: "http://pay.ispay.in/query/" + getParm('order_id'),
+          url: "https://pay.ispay.in/query/" + getParm('order_id'),
           type: 'GET',
           success: function (data) {
             if (data.success) {
@@ -389,7 +389,7 @@
 
       function repeatOrder() {
         $.ajax({
-          url: "http://pay.ispay.in/repeat",
+          url: "https://pay.ispay.in/repeat",
           type: 'POST',
           data: {
             'orderid': getParm('order_id')

@@ -1,96 +1,96 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/js/bootstrap.min.css" ><link rel="stylesheet" href="/js/css.css"  >
-    <title>Hello, isPay</title>
 
-  </head>
- 
-    <body class="bg-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/js/bootstrap.min.css">
+  <link rel="stylesheet" href="/js/css.css">
+  <title>Hello, isPay</title>
 
+</head>
 
+<body class="bg-light">
 
- 
-      <main role="main" class="container">
+  <main role="main" class="container">
+    <div class="align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow bestpay">
+      <div class="row">
+        <div class="col">
 
-        <div class="align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow bestpay" >
-          <div class="row" >
-          <div class="col">
-            
-            <div class="lh-100 ">
-                <h6 class="mb-0 text-white lh-100">星空支付付款</h6>
-                <small>bestpay</small>
-              </div>
+          <div class="lh-100 ">
+            <h6 class="mb-0 text-white lh-100">星空支付付款</h6>
+            <small>bestpay</small>
           </div>
-          <div class="col">
-          </div>
-          </div>
-        </div> 
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
 
-        <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">支付信息</h6>
-            
-                <ul class="list-group my-3">
-                <li class="list-group-item">
-                        <span id="qrother">请按照下面的金额输入充值金额，否则系统将无法收款</span>
-                    </li>
-                    <li class="list-group-item">
-                        <span class="money" id="money1"></span> 
-                        <span class="money_small" id="money2"></span>
-                    </li>
-                    <li class="list-group-item" >
-                              <div class="img-box" style="flex-direction: column;">
-                                    <div class="qrcodeimg"><img id="qrcodeimg" ></div>
-                                    <div class="timeout" style="display: none">二维码已过期</div>
-                                </div>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <h6 class="border-bottom border-gray pb-2 mb-0">支付信息</h6>
 
-                    </li>
-                    <li class="list-group-item" id="trade_no"></li>
-
-                    <li class="list-group-item">
-                            <span id="qrother">支持微信,支付 扫一扫继续付款</span>
-                            <span id="qrmobile">请长按二维码保存至手机或手机截图后，打开微信,支付,使用“扫一扫”，点击右上角“相册”选择刚保存的二维码进行支付</span>
-                    </li>
-                    <li class="list-group-item">
-                            <li class="list-group-item">
-                                    <div class="count" id="time-box"></div>
-                            </li>
-                  </ul>
-       
-
-          </div>
-          
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content ">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="myModalLabel">提示</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                </div>
-              </div>
-            </div>
+      <ul class="list-group my-3">
+        <li class="list-group-item">
+          <span id="qrother">请按照下面的金额输入充值金额，否则系统将无法收款</span>
+        </li>
+        <li class="list-group-item">
+          <span class="money" id="money1"></span>
+          <span class="money_small" id="money2"></span>
+        </li>
+        <li class="list-group-item">
+          <div class="img-box" style="flex-direction: column;">
+            <div class="qrcodeimg"><img id="qrcodeimg"></div>
+            <div class="timeout" style="display: none">二维码已过期</div>
           </div>
 
-      </main>
+        </li>
+        <li class="list-group-item" id="trade_no"></li>
+
+        <li class="list-group-item">
+          <span id="qrother">支持微信,支付 扫一扫继续付款</span>
+          <span id="qrmobile">请长按二维码保存至手机或手机截图后，打开微信,支付,使用“扫一扫”，点击右上角“相册”选择刚保存的二维码进行支付</span>
+        </li>
+        <li class="list-group-item">
+        <li class="list-group-item">
+          <div class="count" id="time-box"></div>
+        </li>
+      </ul>
 
 
-      <script src="/js/jquery.js" ></script>
-      <script src="/js/popper.min.js" ></script>
-      <script src="/js/bootstrap.min.js"></script>
-      <script src="/js/jquery.cookie.js" ></script>
-      <script src="/js/jquery.form.min.js" ></script>
-      <script src="/js/pay.min.js?v=0000000002" ></script>
+    </div>
 
-  </body>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">提示</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.cookie.js"></script>
+  <script src="/js/jquery.form.min.js"></script>
+  <script src="/js/pay.min.js?v=0000000002"></script>
+
+</body>
+
 </html>

@@ -91,12 +91,6 @@
   <script>
     $(document).ready(function () {
 
-
-
-
-      // $("#qrcodeimg").attr("src",decodeURIComponent(getParm('qrurls')));
-      // $("#trade_no").html("<h4>"+getParm('tradeno')+"</h4>");
-
       var order_id = getParm('order_id');
 
 
@@ -201,12 +195,13 @@
 
       function getQrcode() {
         $.ajax({
-          url: "http://pay.ispay.in/order/" + order_id,
+          url: "https://pay.ispay.in/qrcode/" + order_id,
           type: 'GET',
           success: function (data) {
             if (data.success) {
               if (data.order.state == 5) {
                 $("#qrcodeimg").attr('src', data.order.imgtext);
+                $("#trade_no").val(data.order.order_id);
                 judgeState();
               }
             } else {
