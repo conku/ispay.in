@@ -1,0 +1,136 @@
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+@media (max-width: 767.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: var(--gray-dark);
+    transition: -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .offcanvas-collapse.open {
+    -webkit-transform: translateX(-1rem);
+    transform: translateX(-1rem); /* Account for horizontal padding on navbar */
+  }
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: #2C448D; }
+
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
+
+.logo{
+  margin-right: 20px;
+  width: 50px;
+}
+.form1{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2C448D;
+    border-color: #2C448D;
+}
+.btn-amount{
+  width: 100%;
+}
+
+.bd-amount-row .row+.row {
+    margin-top: 1rem;
+}
+
+.wechat{
+    background: #95c050;
+}
+.bestpay{
+  background:#DC5357;
+}
+
+.header{
+  width: 100%;
+
+  cursor: pointer;
+}
+.bt-icon-wechat{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.bt-icon-alipay{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+
+.bg-dark {
+    background-color: #2C448D!important;
+}
+.navbar small{
+  color: azure;
+  border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+}
+
+.navbar-icon{
+   width: 50px;
+   margin-left: 10px;
+}
+
+.list-group-item{
+    border: 0;
+    text-align: center;
+    padding: .2rem 1.25rem;
+}
+.money{
+    font-size: 1.5rem;
+}
+.money_small{
+    font-size: 12px;
+    color: red;
+}
+.qrcodeimg{
+    margin: 0px;
+}
+
+.qrcodeimg img{
+    clip-path: inset(0px 0px 0px 0px);
+    width: 360px;
+}
+.timeout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(255,255,255,.95);
+    color: #222;
+    line-height: 300px;
+    text-align: center;
+    z-index: 1;
+}
+
+#trade_no{
+    font-size: 20px;
+}

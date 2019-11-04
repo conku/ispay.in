@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/js/bootstrap.min.css">
+  <title>Hello, isPay!</title>
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+      /* Prevent scroll on narrow devices */
+    }
+
+
+    @media (max-width: 767.98px) {
+      .offcanvas-collapse {
+        position: fixed;
+        top: 56px;
+        /* Height of navbar */
+        bottom: 0;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        background-color: var(--gray-dark);
+        transition: -webkit-transform .3s ease-in-out;
+        transition: transform .3s ease-in-out;
+        transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+      }
+
+      .offcanvas-collapse.open {
+        -webkit-transform: translateX(-1rem);
+        transform: translateX(-1rem);
+        /* Account for horizontal padding on navbar */
+      }
+    }
+
+    .text-white-50 {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .bg-purple {
+      background-color: #2C448D;
+    }
+
+    .border-bottom {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .box-shadow {
+      box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+
+    .lh-100 {
+      line-height: 1;
+    }
+
+    .lh-125 {
+      line-height: 1.25;
+    }
+
+    .lh-150 {
+      line-height: 1.5;
+    }
+
+    .logo {
+      margin-right: 20px;
+      width: 50px;
+    }
+
+    .form1 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .btn-alipay {
+      color: #fff;
+      background-color: #2C448D;
+      border-color: #2C448D;
+    }
+
+    .btn-wechat {
+      color: #fff;
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+
+    .btn-bestpay {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-amount {
+      width: 100%;
+    }
+
+    .bd-amount-row .row+.row {
+      margin-top: 1rem;
+    }
+
+
+    .header {
+      width: 100%;
+
+      cursor: pointer;
+    }
+
+    .bt-icon-wechat {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .bt-icon-alipay {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .bg-all {
+      background-color: #2C448D !important;
+    }
+
+    /* 
+.alipay {
+    background-color: #2C448D!important;
+}
+.wechat {
+    background-color: #51A451!important;
+}
+.bestpay {
+    background-color: #DC5357!important;
+}  */
+
+    .navbar small {
+      color: azure;
+      border-top-left-radius: 0.25rem !important;
+      border-top-right-radius: 0.25rem !important;
+      border-bottom-right-radius: 0rem !important;
+      border-bottom-left-radius: 0rem !important;
+    }
+
+    .navbar-icon {
+      width: 50px;
+      margin-left: 10px;
+    }
+
+    .sharp-payment {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAzMzPI8eYgAAAAAXRSTlMAQObYZgAAACFJREFUeAFjGHbgPxzQmAOzkJYcevlnUIfbKId+8TPcAABiiH6QaHJZHQAAAABJRU5ErkJggg==)
+    }
+
+    .icon-image-preview {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .icon-img-preview__white {
+      -webkit-filter: contrast(4) invert(1);
+      -moz-filter: contrast(4) invert(1);
+      -o-filter: contrast(4) invert(1);
+      -ms-filter: contrast(4) invert(1);
+      filter: contrast(4) invert(1);
+    }
+
+    .container1 {
+      height: 100%;
+      text-align: center;
+    }
+
+    .radio_box {
+      width: 140px;
+      height: 140px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+
+    #bg_canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #percent_canvas {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+    }
+
+    .center_div {
+      position: absolute;
+      width: 129px;
+      height: 129px;
+      border-radius: 50%;
+      left: 7px;
+      top: 7px;
+      background: #2C448D;
+      line-height: 130px;
+      font-size: 36px;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <main role="main" class="container">
+
+    <div class="pos-f-t my-3 ">
+      <nav class="navbar navbar-dark bg-all p-3 rounded">
+
+        <i class="sharp-payment icon-image-preview icon-img-preview__white"></i>
+
+        <div class="float-left">
+
+
+          <div class="bg-all logo-icon">
+
+            <div class="lh-100 float-left">
+              <h6 class="mb-0 text-white lh-100">就付</h6>
+              <small>isPay.in</small>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+      </nav>
+
+
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <h6 class="border-bottom border-gray pb-2 mb-0">正在生成订单二维码</h6>
+
+      <div class="container1">
+        <div class="radio_box">
+          <canvas id='bg_canvas' width="140px" height="140px"></canvas>
+          <canvas id='percent_canvas' width="145px" height="145px"></canvas>
+          <div class="center_div"></div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">提示</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary " data-dismiss="modal">继续等待</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.cookie.js"></script>
+  <script src="/js/jquery.form.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      function getParm(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURIComponent(r[2]);
+        return null;
+      }
+
+      var down_time = 30;
+      var order_timeout = 30;
+      var timerCanvas = null;
+
+      function createDownTime() {
+        var canvas_2 = document.querySelector('#percent_canvas');
+        var ctx_2 = canvas_2.getContext('2d');
+        ctx_2.lineWidth = 5;
+        ctx_2.strokeStyle = "#2C448D";
+        var perarg = 360 / order_timeout;
+        var angle = down_time * perarg;
+        var delayT = 0;
+        var loginT = 0;
+        var nowAngle = 270; //此值计算为 (目前经过的时间)/(总时间)*360;
+        draw(angle);
+
+        show();
+
+        // 之后时间变动,nowAngle也要变动,执行draw(nowAngle),时间到了就停止;
+        function draw(n) {
+          ctx_2.clearRect(0, 0, canvas_2.width, canvas_2.height)
+          ctx_2.beginPath();
+          ctx_2.arc(canvas_2.width / 2, canvas_2.height / 2, canvas_2.width / 2 - ctx_2.lineWidth / 2, -Math.PI / 2,
+            n * Math.PI / 180 - Math.PI / 2, false);
+          ctx_2.stroke();
+          ctx_2.closePath();
+        }
+
+        var count = 0;
+
+        function show() {
+          angle -= perarg;
+          var time = down_time;
+          time--;
+          down_time = time;
+          $(".center_div").html(down_time + "″");
+          clearTimeout(timerCanvas);
+          draw(angle);
+          if (angle <= 0) {
+            console.log("执行完毕！")
+            $('#myModal').modal('show');
+            $('#myModal .modal-body').text("系统生成二维码失败，是否继续执行");
+            //$('#myModal .modal-footer .btn').text("继续等待");
+            $('#myModal').on('hide.bs.modal', function (e) {
+              if (++count == 1) {
+                //调用你需要的方法
+                repeatOrder();
+                down_time = 30;
+                createDownTime();
+              }
+
+
+            });
+            clearTimeout(timerCanvas);
+          } else {
+            getqrcode()
+            timerCanvas = setTimeout(show, 1000)
+          }
+        }
+      }
+
+      function getqrcode() {
+        $.ajax({
+          url: "http://pay.ispay.in/query/" + getParm('order_id'),
+          type: 'GET',
+          success: function (data) {
+            if (data.success) {
+              if (data.state == 5) {
+
+                var setTime = 300;
+                var ctime = $.cookie('time');
+                if (ctime <= 0 || ctime == null || ctime == undefined) {
+                  var date = new Date();
+                  date.setTime(date.getTime() + 300 * 1000);
+                  $.cookie('time', setTime, {
+                    expires: date,
+                    path: '/'
+                  });
+                }
+                window.location.href = "/902?order_id=" + getParm('order_id');
+              }
+              //$.cookie('time',0, {path: '/'});
+              //$.cookie('num',null, {expires: -1, path: '/'});
+            } else {
+              console.log("获取二维码失败")
+            }
+          }
+        });
+      }
+
+      function repeatOrder() {
+        $.ajax({
+          url: "http://pay.ispay.in/repeat",
+          type: 'POST',
+          data: {
+            'orderid': getParm('order_id')
+          },
+          success: function (data) {
+            if (data.success) {
+              //$.cookie('time',0, {path: '/'});
+              //$.cookie('num',null, {expires: -1, path: '/'});
+            } else {
+              console.log("生成该订单失败")
+            }
+          }
+        });
+      }
+
+      createDownTime()
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/js/bootstrap.min.css">
+  <link rel="stylesheet" href="/js/css.css">
+  <title>Hello, isPay</title>
+</head>
+
+<body class="bg-light">
+
+  <main role="main" class="container">
+
+    <div class="align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow  alipay">
+      <div class="row">
+        <div class="col">
+          <img class="logo float-left" alt="支付宝付款"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyMzg3NWJiMS1iZDU2LTQ3NDktOTIxZS1kMzZmZmI3YTI2MTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUEwRjcxQzdENjk2MTFFNEJBNDdFNzZCQUZEQTk1QUMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUEwRjcxQzZENjk2MTFFNEJBNDdFNzZCQUZEQTk1QUMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjM4NzViYjEtYmQ1Ni00NzQ5LTkyMWUtZDM2ZmZiN2EyNjE4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjIzODc1YmIxLWJkNTYtNDc0OS05MjFlLWQzNmZmYjdhMjYxOCIvPiA8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">
+          <div class="lh-100 ">
+            <h6 class="mb-0 text-white lh-100">支付宝收款</h6>
+            <small>alipay</small>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <h6 class="border-bottom border-gray pb-2 mb-0">支付信息</h6>
+
+      <ul class="list-group my-3">
+        <li class="list-group-item">
+          <span class="money" id="money1"></span>
+          <span class="money_small" id="money2"></span>
+        </li>
+        <li class="list-group-item">
+          <div class="img-box" style="flex-direction: column;">
+            <div class="qrcodeimg"><img id="qrcodeimg"></div>
+            <div class="timeout" style="display: none">二维码已过期</div>
+          </div>
+
+        </li>
+        <li class="list-group-item" id="trade_no"></li>
+
+        <li class="list-group-item">
+          <span id="qrother">打开手机支付宝,扫一扫继续付款</span>
+          <span id="qrmobile">请长按二维码保存至手机后，打开支付宝使用“扫一扫”，点击右上角“相册”选择刚保存的二维码进行支付</span>
+        </li>
+        <li class="list-group-item">
+          <a class="download-alipay" href="https://mobile.alipay.com/index.htm" target="_blank">首次使用请下载手机支付宝</a></li>
+        <li class="list-group-item">
+          <div class="count" id="time-box"></div>
+        </li>
+      </ul>
+
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">提示</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.cookie.js"></script>
+  <script src="/js/jquery.form.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+
+
+
+      // $("#qrcodeimg").attr("src",decodeURIComponent(getParm('qrurls')));
+      // $("#trade_no").html("<h4>"+getParm('tradeno')+"</h4>");
+
+      var order_id = getParm('order_id');
+
+
+      // 判断移动设备
+      function isMobile() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          return 1;
+        }
+        return 0;
+      }
+
+      function isWeixin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          return 1;
+        }
+        return 0;
+      }
+
+      // 判断是否安卓QQ浏览器
+      function isQQAndroid() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/QQ/i) == 'qq' && ua.match(/Android/i) == 'android') {
+          return 1;
+        }
+        return 0;
+      }
+
+      function getParm(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURIComponent(r[2]);
+        return null;
+      }
+
+      if (isMobile() && !isWeixin() && !isQQAndroid()) {
+        // 手机端且不是微信浏览器且不是安卓QQ时支持一键打开支付宝
+        $("#qrother").hide();
+        $("#qrmobile").show();
+        $("#startApp").show();
+      } else {
+        $("#qrother").show();
+        $("#qrmobile").hide();
+        $("#startApp").hide();
+      }
+
+      // 倒计时
+      var count = 300;
+
+      function countDown() {
+        if (count == 0) {
+
+          return;
+        } else {
+          count--;
+        }
+        setTimeout(function () {
+          countDown();
+        }, 1000);
+      }
+
+      function countTime() {
+        var time = $.cookie('time');
+        if (time <= 0) {
+          $(".timeout").show();
+          $("#time-box").hide();
+          count = 10000;
+          return;
+        } else {
+          time--;
+          showTime(time);
+          $.cookie('time', time, {
+            path: '/'
+          });
+        }
+        setTimeout(function () {
+          countTime();
+        }, 1000);
+      }
+
+      function showTime(v) {
+        if (v == null || v == "") {
+          return "";
+        }
+        var m = 0,
+          s = 0;
+        if (v >= 60) {
+          m = Math.floor(v / 60);
+          s = v % 60;
+        } else {
+          s = v;
+        }
+
+        if (m >= 0 && m <= 9) {
+          m = "0" + m;
+        }
+        if (s >= 0 && s <= 9) {
+          s = "0" + s;
+        }
+        $("#time-box").html("请于 " + m + " 分 " + s + " 秒 内支付");
+      }
+
+      function getQrcode() {
+        $.ajax({
+          url: "http://pay.ispay.in/order/" + order_id,
+          type: 'GET',
+          success: function (data) {
+            if (data.success) {
+              if (data.order.state == 5) {
+                $("#qrcodeimg").attr('src', data.order.imgtext);
+                judgeState();
+              }
+            } else {
+              console.log("获取二维码失败")
+            }
+          }
+        });
+      }
+
+      function judgeState() {
+        $.ajax({
+          url: "/query/" + order_id,
+          type: 'GET',
+          success: function (data) {
+            if (data.success) {
+              if (data.state == 9) {
+                $('#myModal').modal('show');
+                $('#myModal .modal-body').text("恭喜您已成功支付，请查收通知邮件！");
+                $.cookie('time', 0, {
+                  path: '/'
+                });
+              } else {
+                setTimeout(function () {
+                  judgeState();
+                }, 5000);
+              }
+            } else {
+              console.log("获取二维码失败")
+
+              // if (data.unix>0){
+              //     showTime(data.unix);
+              //     $.cookie('time', data.unix, {path: '/'});
+
+              //     setTimeout(function () {
+              //         judgeState();
+              //     }, 5000);
+              // }else{
+              //     $('#myModal').modal('show');
+              //     $('#myModal .modal-body').text("该订单未完成支付,已经过期！");
+              //     $('#myModal').on('hide.bs.modal', function (e) {
+              //         window.location.href = "/u/"+userid;
+              //     });
+              // }
+            }
+          }
+        });
+      }
+
+      countDown();
+      countTime();
+      getQrcode();
+
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/js/bootstrap.min.css" >
+    <title>Hello, isPay!</title>
+    <style>
+    html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+
+@media (max-width: 767.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: var(--gray-dark);
+    transition: -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .offcanvas-collapse.open {
+    -webkit-transform: translateX(-1rem);
+    transform: translateX(-1rem); /* Account for horizontal padding on navbar */
+  }
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: #2C448D; }
+
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
+
+.logo{
+  margin-right: 20px;
+  width: 50px;
+}
+.form1{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-alipay {
+    color: #fff;
+    background-color: #2C448D;
+    border-color: #2C448D;
+}
+.btn-wechat {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-bestpay {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-amount{
+  width: 100%;
+}
+
+.bd-amount-row .row+.row {
+    margin-top: 1rem;
+}
+
+
+.header{
+  width: 100%;
+
+  cursor: pointer;
+}
+.bt-icon-wechat{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.bt-icon-alipay{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.bg-all {
+    background-color: #2C448D!important;
+}
+/* 
+.alipay {
+    background-color: #2C448D!important;
+}
+.wechat {
+    background-color: #51A451!important;
+}
+.bestpay {
+    background-color: #DC5357!important;
+}  */
+
+.navbar small{
+  color: azure;
+  border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+}
+
+.navbar-icon{
+   width: 50px;
+   margin-left: 10px;
+}
+
+.sharp-payment {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAzMzPI8eYgAAAAAXRSTlMAQObYZgAAACFJREFUeAFjGHbgPxzQmAOzkJYcevlnUIfbKId+8TPcAABiiH6QaHJZHQAAAABJRU5ErkJggg==)
+}
+
+.icon-image-preview {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.icon-img-preview__white{
+    -webkit-filter: contrast(4) invert(1);
+    -moz-filter: contrast(4) invert(1);
+    -o-filter: contrast(4) invert(1);
+    -ms-filter: contrast(4) invert(1);
+    filter: contrast(4) invert(1);
+}
+
+</style>
+  </head>
+ 
+    <body class="bg-light">
+
+      <main role="main" class="container">
+
+          <div class="pos-f-t my-3 ">
+              <nav class="navbar navbar-dark bg-all p-3 rounded">
+
+              <i class="sharp-payment icon-image-preview icon-img-preview__white"></i>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0V0z"/>
+              <path d="M22 4H2v16h20V4zm-2 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg> -->
+                  <!-- <button class="navbar-toggler float-left" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  
+                </button> -->
+                <div class="float-left">
+                  <!-- <div class="wechat logo-icon" hidden>
+                    <img class="navbar-icon"  alt="微信收款" src="data:image/png;base64,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" >
+                    <div class="lh-100 float-left">
+                        <h6 class="mb-0 text-white lh-100">微信收款</h6>
+                        <small>WeChat</small></div>
+                      </div> -->
+
+                  <div class="bg-all logo-icon">
+                    <!-- <img class="navbar-icon"  alt="支付宝付款" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyMzg3NWJiMS1iZDU2LTQ3NDktOTIxZS1kMzZmZmI3YTI2MTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUEwRjcxQzdENjk2MTFFNEJBNDdFNzZCQUZEQTk1QUMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUEwRjcxQzZENjk2MTFFNEJBNDdFNzZCQUZEQTk1QUMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjM4NzViYjEtYmQ1Ni00NzQ5LTkyMWUtZDM2ZmZiN2EyNjE4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjIzODc1YmIxLWJkNTYtNDc0OS05MjFlLWQzNmZmYjdhMjYxOCIvPiA8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" >
+                     -->
+                    <div class="lh-100 float-left">
+                    <h6 class="mb-0 text-white lh-100">就付</h6>
+                    <small>isPay.in</small></div>
+                  </div>
+
+                  <!-- <div class="bestpay logo-icon" >
+                    <img class="navbar-icon"  alt="翼支付付款" src="data:image/png;base64,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" >
+            
+                    <div class="lh-100 float-left">
+                    <h6 class="mb-0 text-white lh-100">翼支付收款</h6>
+                    <small>Bestpay</small></div>
+                  </div> -->
+
+                    
+                    
+                </div>
+              </nav>
+
+              <!-- <div class="collapse" id="navbarToggleExternalContent" data-toggle="collapse" aria-expanded="true" data-target="#navbarToggleExternalContent" >
+                  <ul class="my-1 list-group">
+                        <a href="#alipay" class="list-group-item list-group-item-action active bt-selectpay">支付宝收款</a>
+                        <a href="#wechat" class="list-group-item list-group-item-action bt-selectpay">微信收款</a>
+                        <a href="#bestpay" class="list-group-item list-group-item-action bt-selectpay">翼支付收款</a>
+                    </ul>
+                </div> -->
+
+            </div>
+
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">支付信息</h6>
+            
+            <form id="form1">
+
+                      <input type="hidden" name="userid" id="userid"  value="{{.userid}}">
+                      <input type="hidden" name="return_url" id="return_url"  value="http://">
+                      <input type="hidden" name="trade_no" id="trade_no"  value="">
+                      <input type="hidden" name="description" id="description"  value="">
+
+                      <div class="form-group row my-3">
+                        <label for="subject" class="col-sm-2 col-form-label">手动金额</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" name="amount" id="amount" placeholder="请输入要充值的金额">
+                        </div>
+                      </div>
+
+                      <div class="form-group row bd-amount-row ">
+                          <label for="amount" class="col-sm-2 col-form-label">选择金额</label>
+                          
+
+                          <div class="col-sm-10">
+                              <div class="row">
+                                  <div class="col">
+                                      <button type="button" value="1" class="btn btn-outline-secondary btn-amount"> 1.0 (Test)</button>
+                                  </div>
+                                  <div class="col">
+                                  </div>
+                                  <div class="col">
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col">
+                                      <button type="button" value="100" class="btn btn-outline-secondary btn-amount">100</button>
+                                  </div>
+                                  <div class="col">
+                                      <button type="button" value="300" class="btn btn-outline-secondary btn-amount">300</button>
+                                  </div>
+                                  <div class="col">
+                                      <button type="button" value="500" class="btn btn-outline-secondary btn-amount">500</button>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" value="1000" class="btn btn-outline-secondary btn-amount">1000</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" value="2000" class="btn btn-outline-secondary btn-amount">2000</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" value="3000" class="btn btn-outline-secondary btn-amount">3000</button>
+                                    </div>
+                                  </div>
+                          </div>
+
+
+                      </div>
+
+
+                      <!-- <div class="form-group row">
+                          <label for="subject" class="col-sm-2 col-form-label">商品名称</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="商品名称">
+                          </div>
+                        </div> -->
+
+                        <div class="form-group row">
+                          <label for="subject" class="col-sm-2 col-form-label">支付通道</label>
+                          <div class="col-sm-10">
+
+                          <select id="order_type" name="order_type" class="form-control">
+                                  <option value="P901">支付宝免签扫码</option>
+                                  <option value="P902">微信免签扫码</option>
+                                  <option value="P903">银行卡</option>
+                                  
+                                  <!-- <option value="904">支付宝免签H5</option>
+                                  <option value="912">银联H5</option>
+                                  <option value="918">在线网银</option>
+                                  <option value="921">支付宝转银行卡扫码</option>
+                                  <option value="922">支付宝转银行卡H5</option>
+                                  <option value="925">支付宝红包转账扫码</option>
+                                  <option value="924">支付宝红包转账H5</option>
+                                  <option value="923">支付宝转账银行卡扫码SMS</option>
+                                  <option value="926">云闪付扫码</option>
+                                  <option value="927">支付宝主动收款</option>
+                                  <option value="929">银联扫码</option>
+                                  <option value="930">支付宝通道扫码</option>									 -->
+                          </select>
+
+
+
+                          </div>
+                        </div>
+
+                      <button id="btnok" type="button" class="btn btn-alipay btn-lg btn-block"> 确定购买
+                          
+                      </button>
+               </form>
+
+          </div>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content ">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModalLabel">提示</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </main>
+
+      <script>
+    
+      </script>
+
+      <script src="/js/jquery.js" ></script>
+      <script src="/js/popper.min.js" ></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/jquery.cookie.js" ></script>
+      <script src="/js/jquery.form.min.js" ></script>
+      <script >
+$(document).ready(function(){
+
+    // var setTime=300;
+    // var ctime = $.cookie('time');
+
+    // if (ctime<=0 || ctime==null || ctime==undefined){
+    //   var date = new Date();
+    //   date.setTime(date.getTime()+300*1000);
+    //   $.cookie('time', setTime,{expires: date, path: '/' });
+    // }
+
+    $(".btn-amount").click(function(){
+        $(".btn-amount").addClass("btn-outline-secondary").removeClass("btn-secondary");
+        $(this).removeClass("btn-outline-secondary").addClass("btn-secondary");
+        $("#amount").val($(this).val());
+    });
+
+
+    $("#btnok").click(function () {
+      var options = {
+          url: "/pay/qrcode", 
+          type: "post", 
+          beforeSubmit: beforeCheck, 
+          success: successfun, 
+          dataType: "json",
+          clearForm: false,
+          resetForm: false, 
+          timeout: 3000,
+      };
+
+      function beforeCheck(formData, form, options) {
+          var formDom = form[0];
+          var amount = formDom["amount"].value;
+
+          if (amount==0){
+            $('#myModal').modal('show');
+            $('#myModal .modal-body').text("请选择要充值的金额！");
+            return false;
+          }
+
+          $("#btnok").text("");
+          $("#btnok").addClass("disabled").append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>  Loading...');
+          
+          return true;
+      }
+
+      function successfun(m, status) {
+          if(m.success){
+            $("#btnok").addClass("disabled").text("正在跳转进入支付...");
+              window.location.href = "/loading?order_id="+m.order_id;
+          }else{
+            $('#myModal').modal('show');
+            $('#myModal .modal-body').text(m.errorCode +":"+ m.errorMsg);
+            $("#btnok").removeClass("disabled").text("确定购买");
+          }
+      }
+
+      $('#form1').ajaxSubmit(options);
+       
+    });
+
+    function countTime() {
+          var time = $.cookie('time');
+          if (time <= 0) {
+              $(".timeout").show();
+              $("#time-box").hide();
+              count=10000;
+              return;
+          } else {
+              time--;
+              showTime(time);
+              $.cookie('time', time, { path: '/'});
+          }
+          setTimeout(function () {
+              countTime();
+          }, 1000);
+    }
+});
+      </script>
+  </body>
+</html>

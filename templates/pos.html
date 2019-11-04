@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>启动扫描机</title>
+    <script type="text/javascript" src="https://demo.themeeting.cn/koubei/qrious.min.js?v=1.0.0.21"></script>
+    <link rel="stylesheet" media="screen" href="https://demo.themeeting.cn/koubei/pay.css?v=?v=1562329703"/>
+    <link rel="stylesheet" type="text/css" href="https://demo.themeeting.cn/koubei/alipay.css?v=1.0.0.21" />
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo"></div>
+</div>
+
+
+<div class="am-list">
+    <div class="am-list-footer am-ft-orange" >摄像头开启后,请直接扫描身边任意二维码(烟盒、饮料等)包装上的条形码或二维码，即可跳转支付支付界面：</div>
+    <div class="am-list-footer am-ft-orange" >如：烟盒上的条形码、零食上的条形码、饮料上的条形码、纸巾上的条形码、其他商品上的条形码</div>
+    <div class="am-list-footer"><br/></div>
+    <div class="am-list-footer"><br/></div>
+    <div class="am-list-footer"><br/></div>
+    <div class="am-list-footer"><br/></div>
+
+</div>
+<div class="am-button-wrap" style="padding: 0 .15rem;">
+    <button id="xx" type="button" class="am-button blue">立即付款</button>
+</div>
+
+<footer class="am-footer am-fixed am-fixed-bottom">
+    <div class="am-footer-copyright">&copy; 2019 All rights reserved.</div>
+</footer>
+
+
+<script>
+    var gopay = '{{.erweima}}';
+    document.getElementById('xx').addEventListener('click',function () {
+        ap.scan(function(res){
+            window.location.href = gopay;
+        });
+    });
+</script>
+
+
+</body>
+</html>
