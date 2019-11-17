@@ -18,7 +18,8 @@ import (
 const (
 	XForwardedFor = "X-Forwarded-For"
 	XRealIP       = "X-Real-IP"
-	SignKey       = "7f0f6fdba194f8c7ed264ce91028ac6c"
+	Userid        = "10004" //10004
+	SignKey       = ""      //商户签名
 )
 
 type businessModel struct {
@@ -143,7 +144,6 @@ func formdata(c *gin.Context) {
 
 	// 测试的签名地址
 
-	userid := "10001"
 	urls := "https://pay.ispay.in/gateway"
 
 	amount, err := strconv.ParseInt(c.PostForm("amount"), 10, 64)
@@ -161,7 +161,7 @@ func formdata(c *gin.Context) {
 	var r http.Request
 	r.ParseForm()
 	r.Form.Add("order_no", order_no)
-	r.Form.Add("userid", userid)
+	r.Form.Add("userid", Userid)
 	r.Form.Add("subject", subject)
 	r.Form.Add("order_type", order_type)
 	r.Form.Add("amount", FormatPrice(amount))
