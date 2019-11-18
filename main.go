@@ -18,8 +18,8 @@ import (
 const (
 	XForwardedFor = "X-Forwarded-For"
 	XRealIP       = "X-Real-IP"
-	Userid        = "10004" //10004
-	SignKey       = ""      //商户签名
+	Userid        = "10004"                            //10004
+	SignKey       = "c775a071726677eac6cd88e9aad182d2" //商户签名
 )
 
 type businessModel struct {
