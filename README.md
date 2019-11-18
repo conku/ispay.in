@@ -54,7 +54,7 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ```
 
-###### 调用出码
+###### 查询订单状态
 
 调用地址：https://pay.ispay.in/query/{订单ID}
 
@@ -83,5 +83,35 @@ INPAY.IN（就付）数字货币收款支付系统
 ```
 
 {"success": false, "errorCode": 0, "errorMsg": "订单不存在"}
+
+```
+
+###### 订单状态为 5，返回订单信息、金额、二维码
+
+请求方式：GET
+
+调用地址：https://pay.ispay.in/qrcode/{订单ID}
+
+请求方式：GET
+
+返回类型：JSON
+
+返回成功
+
+```
+
+{
+    "success": true,
+    "errorCode": 0,
+    "errorMsg": nil,
+    "order":{
+         "state":   5,                  //订单状态
+         "qrcode":  pays.Urls,          //二维码地址
+         "imgtext": imgtext,            //二维码原始图片base64
+         "amount":  order.Amount,       //订单的价格
+         "sn":      order.OrderSN,      //订单编号
+         "timeout": order.OrderTimeout, //订单时间
+    }
+}
 
 ```
