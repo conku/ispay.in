@@ -68,9 +68,11 @@ func main() {
 		body2, err := Post("https://pay.ispay.in/order/error", bodystr)
 
 		if err == nil {
-			fmt.Println(body2)
+			c.Header("Content-Type", "application/json")
+			c.String(http.StatusOK, string(body2))
+			//fmt.Println(body2)
 		} else {
-			fmt.Println("提交错误失败，请联系客服")
+			c.JSON(http.StatusOK, gin.H{"success": false, "errorCode": 0, "errorMsg": "提交错误失败，请联系客服"})
 		}
 
 	})
@@ -116,8 +118,15 @@ func main() {
 		// {"9", "订单已完成"},
 
 		trade_no := c.Param("trade_no")
+
+		//fmt.Println(trade_no)
 		if body, err := Get("https://pay.ispay.in/query/" + trade_no); err == nil {
-			fmt.Println(string(body))
+			// 再设置个json
+			c.Header("Content-Type", "application/json")
+			c.String(http.StatusOK, string(body))
+		} else {
+			c.JSON(http.StatusOK, gin.H{"success": false, "errorCode": 0, "errorMsg": err})
+			//fmt.Println(err)
 		}
 	})
 
@@ -169,6 +178,7 @@ func formdata(c *gin.Context) {
 	r.Form.Add("notify_url", notify_url)
 	r.Form.Add("order_time", fmt.Sprintf("%d", order_time.Unix()))
 	r.Form.Add("ip", ip)
+
 	r.Form.Add("sign", MD5(MD5(order_no+fmt.Sprintf("%d", order_time.Unix()))+SignKey))
 
 	bodystr := strings.TrimSpace(r.Form.Encode())
@@ -278,10 +288,12 @@ func Post(urls string, post_data string) ([]byte, error) {
 	return body, nil
 }
 
+//获取流媒体
 func Get(urls string) ([]byte, error) {
 
-	request, err := http.NewRequest("Get", urls, nil)
+	request, err := http.NewRequest("GET", urls, nil)
 	request.Header.Set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+	request.Header.Set("Host", "pay.ispay.in")
 	request.Header.Set("Pragma", "no-cache")
 	request.Header.Set("User-Agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36")
 	request.Header.Set("X-Requested-With", "XMLHttpRequest")

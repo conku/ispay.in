@@ -25,18 +25,18 @@ INPAY.IN（就付）数字货币收款支付系统
 
 返回类型：JSON
 
-| 名称       | 类型    | 是否必须 | 描述                                                      |
-| ---------- | :------ | :------- | :-------------------------------------------------------- |
-| userid     | int     | 是       | 商户 ID                                                   |
-| subject    | string  | 否       | 订单标题                                                  |
-| order_no   | string  | 是       | 订单号（唯一）列：20191118123424                          |
-| order_type | string  | 是       | 订单类型 支付宝：901，微信：902                           |
-| amount     | float64 | 是       | 订单的金额                                                |
-| notify_url | string  | 是       | 订单通知地址                                              |
-| return_url | string  | 是       | 订单成功回调地址                                          |
-| ip         | string  | 是       | 下单获取的 IP 地址                                        |
-| order_time | string  | 是       | 订单新建的时间                                            |
-| sign       | string  | 是       | 下单获取的 IP 地址 md5(md5(order_no+order_time)+商户签名) |
+| 名称       | 类型    | 是否必须 | 描述                                                       |
+| ---------- | :------ | :------- | :--------------------------------------------------------- |
+| userid     | int     | 是       | 商户 ID                                                    |
+| subject    | string  | 否       | 订单标题                                                   |
+| order_no   | string  | 是       | 订单号（唯一）列：20191118123424                           |
+| order_type | string  | 是       | 订单类型 支付宝：901，微信：902                            |
+| amount     | float64 | 是       | 订单的金额                                                 |
+| notify_url | string  | 是       | 订单通知地址                                               |
+| return_url | string  | 是       | 订单成功回调地址                                           |
+| ip         | string  | 是       | 下单获取的 IP 地址                                         |
+| order_time | string  | 是       | 订单新建的时间                                             |
+| sign       | string  | 是       | md5(userid+order_no+order_type+amount+return_url+商户签名) |
 
 返回成功
 
@@ -111,6 +111,42 @@ INPAY.IN（就付）数字货币收款支付系统
          "amount":  order.Amount,       //订单的价格
          "sn":      order.OrderSN,      //订单编号
          "timeout": order.OrderTimeout, //订单时间
+    }
+}
+
+```
+
+###### 订单号查询
+
+请求方式：GET
+
+调用地址：https://pay.ispay.in/order/:{商户ID}/{订单号}/{md5}
+
+请求方式：GET
+
+返回类型：JSON
+
+签名说明：md5({商户 ID}{订单号}{商户签名})
+
+返回成功
+
+```
+
+{
+    "success": true,
+    "errorCode": 0,
+    "errorMsg": nil,
+    "order":{
+        "sn":             "20191118123424",               //订单编号
+         "state":         5,                          //订单状态
+         "qrcode":        "",                  //二维码地址
+         "imgtext":       "",                    //二维码原始图片base64
+         "returnURL":     "http://.../return/id",     //是否回调
+         "returning":     true,                       //是否回调
+         "amount":        2000.00,               //订单的价格
+         "ip":            "127.0.0.1",                   //订单编号
+         "paytype":       "P901",                  //支付的类型
+         "create_time":   "2019-10-15 17:04:00",       //订单时间
     }
 }
 
