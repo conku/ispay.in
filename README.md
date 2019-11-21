@@ -37,7 +37,7 @@ INPAY.IN（就付）数字货币收款支付系统
 | return_url | string  | 是       | 订单成功回调地址                                           |
 | ip         | string  | 是       | 下单获取的 IP 地址                                         |
 | order_time | string  | 是       | 订单新建的时间                                             |
-| sign       | string  | 是       | md5(userid+order_no+order_type+amount+return_url+商户签名) |
+| sign       | string  | 是       | md5(userid+order_no+order_type+amount+return_url+商户密钥) |
 
 返回成功
 
