@@ -158,3 +158,15 @@ INPAY.IN（就付）数字货币收款支付系统
 }
 
 ```
+
+---
+
+### 接口 URL
+
+调用地址：{ReturnURL}?order_no={order_no}&sign={sign}
+
+请求方式：GET
+
+签名说明：sign = md5({商户 ID}{订单号}{商户密钥})
+
+返回成功
