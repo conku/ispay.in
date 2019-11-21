@@ -161,7 +161,9 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ---
 
-### 接口 URL
+### 回调接口 ReturnURL
+
+订单回调地址：ReturnURL
 
 调用地址：{ReturnURL}?order_no={order_no}&sign={sign}
 
