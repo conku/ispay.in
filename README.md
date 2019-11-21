@@ -30,7 +30,7 @@ INPAY.IN（就付）数字货币收款支付系统
 | userid     | int     | 是       | 商户 ID                                                    |
 | subject    | string  | 否       | 订单标题                                                   |
 | order_no   | string  | 是       | 订单号（唯一）列：20191118123424                           |
-| order_type | string  | 是       | 订单类型 支付宝：901，微信：902                            |
+| order_type | string  | 是       | 订单类型 支付宝：901，微信：902，云闪付：904               |
 | amount     | float64 | 是       | 订单的金额                                                 |
 | notify_url | string  | 是       | 订单通知地址                                               |
 | return_url | string  | 是       | 订单成功回调地址                                           |

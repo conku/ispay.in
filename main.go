@@ -18,8 +18,8 @@ import (
 const (
 	XForwardedFor = "X-Forwarded-For"
 	XRealIP       = "X-Real-IP"
-	Userid        = "" //10004
-	SignKey       = "" //商户签名
+	Userid        = "10004" //10004
+	SignKey       = ""      //商户签名
 )
 
 type businessModel struct {
@@ -178,8 +178,11 @@ func formdata(c *gin.Context) {
 	r.Form.Add("notify_url", notify_url)
 	r.Form.Add("order_time", fmt.Sprintf("%d", order_time.Unix()))
 	r.Form.Add("ip", ip)
+	r.Form.Add("sign", MD5(Userid+order_no+order_type+FormatPrice(amount)+return_url+SignKey))
 
-	r.Form.Add("sign", MD5(MD5(order_no+fmt.Sprintf("%d", order_time.Unix()))+SignKey))
+	fmt.Println(Userid + order_no + order_type + FormatPrice(amount) + return_url + SignKey)
+
+	fmt.Println(MD5(Userid + order_no + order_type + FormatPrice(amount) + return_url + SignKey))
 
 	bodystr := strings.TrimSpace(r.Form.Encode())
 	body2, err := Post(urls, bodystr)
