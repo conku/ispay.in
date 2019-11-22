@@ -184,7 +184,7 @@ INPAY.IN（就付）数字货币收款支付系统
 
 订单回调地址：return_url
 
-调用地址：{return_url}?order_no={order_no}&sign={sign}
+调用地址：{return_url}?order_no={order_no}&amount={amount}&state={state}&sign={sign}
 
 请求方式：GET
 
