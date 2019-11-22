@@ -32,11 +32,11 @@ INPAY.IN（就付）数字货币收款支付系统
 | subject    | string  | 否       | 订单标题                                                   |
 | order_no   | string  | 是       | 订单号（唯一）列：20191118123424                           |
 | order_type | string  | 是       | 订单类型 支付宝：P901，微信：P902，云闪付：P904            |
-| amount     | float64 | 是       | 订单的金额                                                 |
+| amount     | float64 | 是       | 订单的金额,必须 300.00 保留 2 位小数点                     |
 | notify_url | string  | 是       | 订单通知地址                                               |
 | return_url | string  | 是       | 订单成功回调地址                                           |
 | ip         | string  | 是       | 下单获取的 IP 地址                                         |
-| order_time | string  | 是       | 订单新建的时间                                             |
+| order_time | string  | 否       | 订单新建的时间                                             |
 | sign       | string  | 是       | md5(userid+order_no+order_type+amount+return_url+商户密钥) |
 
 返回成功
@@ -80,6 +80,25 @@ INPAY.IN（就付）数字货币收款支付系统
 | state    | int  | 5    | 已接单、已出码 |
 | state    | int  | 8    | 已付款、待确认 |
 | state    | int  | 9    | 已确认完成支付 |
+
+```
+
+{
+    "success": true,
+    "errorCode": 0,
+    "errorMsg": nil,
+     "state":   5,       //订单状态
+    "order":{
+         "qrcode": "https://qr.alipay.com/xxxxxx",                           //二维码地址
+         "imgtext": imgtext,                                                 //二维码原始图片base64
+         "alipayuid": "",                                                    //二维码原始图片base64
+         "amount": 500,                                                      //订单的价格
+         "sn":     "424843497502158848",                                     //订单编号
+         "timeout": 900，                                                    //订单时间
+    }
+}
+
+```
 
 返回失败
 
