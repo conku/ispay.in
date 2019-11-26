@@ -1,46 +1,52 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <title>向商家付款&shy;</title>
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-        <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-        <meta name="Keywords" content="" />
-        <meta name="Description" content="" />
 
-        <!-- Mobile Devices Support @begin -->
-        <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
-        <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
-        <meta content="no-cache" http-equiv="pragma">
-        <meta content="0" http-equiv="expires">
-        <meta content="telephone=no, address=no" name="format-detection">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+<head>
+    <title>向商家付款&shy;</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        name="viewport">
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
 
-        <!-- apple devices fullscreen -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Mobile Devices Support @begin -->
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
-        <!-- Mobile Devices Support @end -->
-        <link rel="stylesheet" href="/css/style.min.css?v=20171124" type="text/css" />
-        <link rel="stylesheet" href="/css/base.min.css?v=20171124" />
-        <style>
-            a[target=_blank][title='站长统计']{
-                display: none;
-            }
-        </style>
-    <meta name="__hash__" content="f33b74327ad52d1f73e85d8179116377_c9e3d1d39084b6d42dfb14856daf0cc2" /></head>
-    <body onselectstart="return true;" ondragstart="return false;" style="-webkit-user-select:none;-moz-user-select:none;-o-user-select:none;user-select:none;">
-    <script  type="text/javascript">
-        var LC={placeholder:"/Public/Wap/img/placeholder.png"};
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Mobile Devices Support @end -->
+    <link rel="stylesheet" href="/css/style.min.css?v=20171124" type="text/css" />
+    <link rel="stylesheet" href="/css/base.min.css?v=20171124" />
+    <style>
+        a[target=_blank][title='站长统计'] {
+            display: none;
+        }
+    </style>
+    <meta name="__hash__" content="f33b74327ad52d1f73e85d8179116377_c9e3d1d39084b6d42dfb14856daf0cc2" />
+</head>
+
+<body onselectstart="return true;" ondragstart="return false;"
+    style="-webkit-user-select:none;-moz-user-select:none;-o-user-select:none;user-select:none;">
+    <script type="text/javascript">
+        var LC = {
+            placeholder: "/Public/Wap/img/placeholder.png"
+        };
     </script>
     <link rel="stylesheet" href="/css/payorder.min.css?v=20171124" />
 
     <style>
         .layui-layer-content {
-            max-width: 1.48rem!important;
+            max-width: 1.48rem !important;
         }
-        .pay-gray{
-            background: #e5e5e5!important;
+
+        .pay-gray {
+            background: #e5e5e5 !important;
         }
     </style>
 
@@ -53,7 +59,8 @@
             </div>
             <!-- 金额输入（账单金额等） -->
             <div class="input-money-box">
-                <div class="js-amount-input pay-amount-box display-flex flex-between-lr flex-horizontal-center s-open-keyboard" data-id="mainMoney">
+                <div class="js-amount-input pay-amount-box display-flex flex-between-lr flex-horizontal-center s-open-keyboard"
+                    data-id="mainMoney">
                     <label class="pay-money-desc" for="">金额</label>
                     <span class="js-input-hint no-pay-amount hide">￥0.00</span>
                     <span class="js-input-amount has-pay-amount">
@@ -66,38 +73,42 @@
 
             <!-- 支付方式 -->
             <div class="pay-way-box">
-                <div class="active pay-way-item display-flex flex-between-lr flex-horizontal-center" id="wechatRadio" data-code="Wxsan" data-id="902">
-                        <span>
-                            <i class=""></i>
-                            <em class="pay-way-desc">微信扫码</em>
-                        </span>
+                <div class="active pay-way-item display-flex flex-between-lr flex-horizontal-center" id="wechatRadio"
+                    data-code="Wxsan" data-id="902">
+                    <span>
+                        <i class=""></i>
+                        <em class="pay-way-desc">微信扫码</em>
+                    </span>
                     <i class="select-icon"></i>
-                </div><div class=" pay-way-item display-flex flex-between-lr flex-horizontal-center" id="wechatRadio" data-code="Aliscan" data-id="903">
-                        <span>
-                            <i class=""></i>
-                            <em class="pay-way-desc">支付宝扫码</em>
-                        </span>
+                </div>
+                <div class=" pay-way-item display-flex flex-between-lr flex-horizontal-center" id="wechatRadio"
+                    data-code="Aliscan" data-id="903">
+                    <span>
+                        <i class=""></i>
+                        <em class="pay-way-desc">支付宝扫码</em>
+                    </span>
                     <i class="select-icon"></i>
                 </div>
 
-            <!-- 会员卡余额 -->
-            
-            <!--备注 部分 start-->
-            <div class="s-remark">
-                <div class="s-remark-port">
-                    <span class="s-remark-title">备注:</span>
-                    <input class="s-remark-info" id="remark" type="text" placeholder="请添加备注信息" maxlength="16">
-                </div>
-            </div>
-            <!--备注 部分 end-->
+                <!-- 会员卡余额 -->
 
-            <!--按钮 部分 start-->
-            <div class="s-pay-btn" id="s-pay-btn">确认支付</div>
-            <!--按钮 部分 end-->
+                <!--备注 部分 start-->
+                <div class="s-remark">
+                    <div class="s-remark-port">
+                        <span class="s-remark-title">备注:</span>
+                        <input class="s-remark-info" id="remark" type="text" placeholder="请添加备注信息" maxlength="16">
+                    </div>
+                </div>
+                <!--备注 部分 end-->
+
+                <!--按钮 部分 start-->
+                <div class="s-pay-btn" id="s-pay-btn">确认支付</div>
+                <!--按钮 部分 end-->
         </section>
 
         <!-- 自定义键盘 start 加上x-mask-show显示-->
-        <div id="keyBoard" class="x-mask-box x-mask-show" data-id="mainMoney" style="z-index:9;background-color: rgba(0,0,0,0);height:auto;" v-cloak>
+        <div id="keyBoard" class="x-mask-box x-mask-show" data-id="mainMoney"
+            style="z-index:9;background-color: rgba(0,0,0,0);height:auto;" v-cloak>
             <div class="x-slide-box pop-up-show">
                 <div class="x-key-board">
                     <div class="row">
@@ -143,7 +154,8 @@
                 <i class="close-icon" data-id="no-remaining"></i>
                 <i class="recharge-hint-icon"></i>
                 <p class="pop-hint-message">会员卡余额不足，请充值</p>
-                <span class="pop-handle-button js-goUrl" data-url="/Wap/Member/cardRecharge/wecha_id/UID/token/16155248/store_id/249370/tn/lifecircle/subid/0/cashier_id/0/subid/0">立即充值</span>
+                <span class="pop-handle-button js-goUrl"
+                    data-url="/Wap/Member/cardRecharge/wecha_id/UID/token/16155248/store_id/249370/tn/lifecircle/subid/0/cashier_id/0/subid/0">立即充值</span>
             </div>
         </div>
 
@@ -153,7 +165,8 @@
                 <i class="close-icon" data-id="lead-active"></i>
                 <i class="active-hint-icon"></i>
                 <p class="pop-hint-message">您还未激活本店的会员卡</p>
-                <span class="pop-handle-button js-goUrl" data-url="/Wap/Member/activateCard/wecha_id/UID/token/16155248/store_id/249370/subid/0/cashier_id/0/subid/0">15秒快速激活会员卡</span>
+                <span class="pop-handle-button js-goUrl"
+                    data-url="/Wap/Member/activateCard/wecha_id/UID/token/16155248/store_id/249370/subid/0/cashier_id/0/subid/0">15秒快速激活会员卡</span>
             </div>
         </div>
 
@@ -164,19 +177,32 @@
             <input type="text" name="amount" id="amount">
             <input type="text" name="mchid" id="mchid" value="10068">
             <input type="text" name="bankcode" id="bankcode">
-        <input type="hidden" name="__hash__" value="f33b74327ad52d1f73e85d8179116377_c9e3d1d39084b6d42dfb14856daf0cc2" /></form>
+            <input type="hidden" name="__hash__"
+                value="f33b74327ad52d1f73e85d8179116377_c9e3d1d39084b6d42dfb14856daf0cc2" /></form>
     </body>
-  
+
     <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/js/layer.js?v=20171124"></script>
     <script type="text/javascript" src="/js/payOrderSimpfilied.min.js?v=20171124"></script>
 
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
-    // var orderSaveUrl = "/Pay_Charges_checkout.html";
-    var auto_wiping_zero = 1
-    $('#s-pay-btn, #confirm_pay').click(function() {
+        // var orderSaveUrl = "/Pay_Charges_checkout.html";
+        var auto_wiping_zero = 1
+        $('#s-pay-btn, #confirm_pay').click(function () {
 
-    })
+        })
+
+        var intervalId, timeoutId;
+
+        timeoutId = setTimeout(function () {
+            console.log(1);
+        }, 300);
+
+        setTimeout(function () {
+            clearTimeout(timeoutId);
+            console.log(2);
+        }, 100);
     </script>
+
 </html>

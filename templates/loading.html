@@ -336,12 +336,14 @@
           $(".center_div").html(down_time + "″");
           clearTimeout(timerCanvas);
           draw(angle);
+
           if (angle <= 0) {
             console.log("执行完毕！")
             $('#myModal').modal('show');
             $('#myModal .modal-body').text("系统生成二维码失败，是否继续执行");
             //$('#myModal .modal-footer .btn').text("继续等待");
             $('#myModal').on('hide.bs.modal', function (e) {
+
               if (++count == 1) {
                 //调用你需要的方法
                 repeatOrder();
@@ -361,7 +363,7 @@
 
       function getqrcode() {
         $.ajax({
-          url: "https://pay.ispay.in/query/" + getParm('order_id'),
+          url: "http://127.0.0.1:7003/query/" + getParm('order_id'),
           type: 'GET',
           success: function (data) {
             if (data.success) {

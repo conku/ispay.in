@@ -57,6 +57,16 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ---
 
+### 方式一，直接跳转出码页面 html
+
+下单成功后
+
+地址说明： https://pay.ispay.in/pay/loading.html?id={订单ID}
+
+请求方式：GET，跳转
+
+---
+
 ### 查询订单状态
 
 调用地址：https://pay.ispay.in/query/{订单ID}
@@ -91,7 +101,7 @@ INPAY.IN（就付）数字货币收款支付系统
     "order":{
          "qrcode": "https://qr.alipay.com/xxxxxx",                           //二维码地址
          "imgtext": imgtext,                                                 //二维码原始图片base64
-         "alipayuid": "",                                                    //二维码原始图片base64
+         "alipayuid": "",                                                    //阿里USERID
          "amount": 500,                                                      //订单的价格
          "sn":     "424843497502158848",                                     //订单编号
          "timeout": 900，                                                    //订单时间
@@ -165,13 +175,13 @@ INPAY.IN（就付）数字货币收款支付系统
     "order":{
         "sn":             "20191118123424",               //订单编号
          "state":         5,                          //订单状态
-         "qrcode":        "",                  //二维码地址
-         "imgtext":       "",                    //二维码原始图片base64
+         "qrcode":        "",                         //二维码地址
+         "imgtext":       "",                         //二维码原始图片base64
          "returnURL":     "http://.../return/id",     //是否回调
          "returning":     true,                       //是否回调
-         "amount":        2000.00,               //订单的价格
+         "amount":        2000.00,                     //订单的价格
          "ip":            "127.0.0.1",                   //订单编号
-         "paytype":       "P901",                  //支付的类型
+         "paytype":       "P901",                     //支付的类型
          "create_time":   "2019-10-15 17:04:00",       //订单时间
     }
 }

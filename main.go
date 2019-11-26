@@ -153,7 +153,7 @@ func formdata(c *gin.Context) {
 
 	// 测试的签名地址
 
-	urls := "https://pay.ispay.in/gateway"
+	urls := "http://127.0.0.1:7003/gateway"
 
 	amount, err := strconv.ParseInt(c.PostForm("amount"), 10, 64)
 	if err != nil {
@@ -180,10 +180,11 @@ func formdata(c *gin.Context) {
 	r.Form.Add("ip", ip)
 	r.Form.Add("sign", MD5(Userid+order_no+order_type+FormatPrice(amount)+return_url+SignKey))
 
-	fmt.Println(Userid + order_no + order_type + FormatPrice(amount) + return_url + SignKey)
-	fmt.Println(MD5(Userid + order_no + order_type + FormatPrice(amount) + return_url + SignKey))
+	// fmt.Println(Userid + order_no + order_type + FormatPrice(amount) + return_url + SignKey)
+	// fmt.Println(MD5(Userid + order_no + order_type + FormatPrice(amount) + return_url + SignKey))
 
 	bodystr := strings.TrimSpace(r.Form.Encode())
+
 	body2, err := Post(urls, bodystr)
 
 	if err != nil {
