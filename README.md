@@ -61,7 +61,7 @@ INPAY.IN（就付）数字货币收款支付系统
 
 下单成功后
 
-地址说明： https://pay.ispay.in/pay/loading.html?id={订单ID}
+地址说明： https://pay.ispay.in/transfer/{订单ID}
 
 请求方式：GET，跳转
 
