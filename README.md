@@ -191,11 +191,11 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ---
 
-### 回调接口 {return_url}
+### 回调接口 {notify_url}
 
-订单回调地址：return_url
+订单回调地址： notify_url
 
-调用地址：{return_url}?order_no={order_no}&amount={amount}&state={state}&sign={sign}
+调用地址：{notify_url}?order_no={order_no}&amount={amount}&state={state}&sign={sign}
 
 请求方式：GET
 
@@ -207,8 +207,16 @@ INPAY.IN（就付）数字货币收款支付系统
 | -------- | :--- | :--- | :------------- |
 | state    | int  | 9    | 已确认完成支付 |
 
-返回 TXT
+返回 TXT 成功
 
 ```
+
+success
+
+```
+
+```
+
+fail
 
 ```
