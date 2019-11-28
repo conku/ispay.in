@@ -2,7 +2,7 @@ db:
   adapter: mysql
   name: db_ispay_in
   user: root
-  password: 123456
+  password: ishgishg
   debug: true
 port: 7005
 domain: https://pay.ispay.in/

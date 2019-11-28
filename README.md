@@ -177,7 +177,8 @@ INPAY.IN（就付）数字货币收款支付系统
          "state":         5,                          //订单状态
          "qrcode":        "",                         //二维码地址
          "imgtext":       "",                         //二维码原始图片base64
-         "returnURL":     "http://.../return/id",     //是否回调
+         "notifyurl":     "http://.../notifyurl/id",   //回调地址
+         "returnurl":     "http://.../return/id",     //返回地址
          "returning":     true,                       //是否回调
          "amount":        2000.00,                     //订单的价格
          "ip":            "127.0.0.1",                   //订单编号
@@ -200,8 +201,14 @@ INPAY.IN（就付）数字货币收款支付系统
 
 签名说明：sign = md5({商户 ID}{订单号}{商户密钥})
 
-返回成功 {state}
+成功状态 {state}
 
 | 订单状态 | 类型 | 状态 | 描述           |
 | -------- | :--- | :--- | :------------- |
 | state    | int  | 9    | 已确认完成支付 |
+
+返回 TXT
+
+```
+
+```

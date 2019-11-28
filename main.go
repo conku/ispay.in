@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"rowei/mvip/common/utils"
 	"strconv"
 	"strings"
 	"time"
@@ -18,8 +19,8 @@ import (
 const (
 	XForwardedFor = "X-Forwarded-For"
 	XRealIP       = "X-Real-IP"
-	Userid        = "10004" //10004
-	SignKey       = ""      //商户签名
+	Userid        = "10004"                            //10004
+	SignKey       = "c775a071726677eac6cd88e9aad182d2" //商户签名
 )
 
 type businessModel struct {
@@ -36,7 +37,31 @@ func main() {
 	r.Static("/img", "./img")
 
 	r.GET("/", func(c *gin.Context) {
+		// go func() {
+		// 	i := 1
+		// 	for {
+		// 		if i > 4 {
+		// 			break
+		// 		}
+		// 		t := time.NewTimer(time.Second * 5)
+		// 		<-t.C
+		// 		fmt.Println(i)
+		// 		i++
+		// 	}
+		// 	fmt.Println("stop")
+		// }()
+
 		c.HTML(http.StatusOK, "index.html", gin.H{})
+	})
+
+	r.GET("/alipay", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "alipay.html", gin.H{})
+	})
+
+	r.GET("/alipay2", func(c *gin.Context) {
+		//alipays://platformapi/startapp?appId=10000011&url=http%3a%2f%2fjstash.best%2fali.html
+		//c.HTML(http.StatusOK, "alipay2.html", gin.H{})
+		c.Redirect(301, "alipays://platformapi/startapp?appId=10000011&url=http%3a%2f%2fjstash.best%2fali.html")
 	})
 
 	r.GET("/902", func(c *gin.Context) {
@@ -58,7 +83,7 @@ func main() {
 
 		var r http.Request
 		r.ParseForm()
-		r.Form.Add("userid", "10001")
+		r.Form.Add("userid", "10004")
 		r.Form.Add("order_id", order_id)
 		r.Form.Add("moblie", "13989898989")
 		r.Form.Add("content", "二维码无法支付")
@@ -80,27 +105,26 @@ func main() {
 	//回调执行
 	r.GET("/url/return", func(c *gin.Context) {
 		order_no := c.Query("order_no")
-		sign := c.Query("sign")
-
-		//实际情况请读取order_time 的时间
-		order_time := time.Now().Unix()
-
-		// 对比签名是否等于
-		if sign == MD5(MD5(order_no+fmt.Sprintf("%d", order_time))+SignKey) {
-			// ok
-			c.JSON(http.StatusOK, gin.H{"success": true, "errorCode": 0, "errorMsg": nil})
-		} else {
-			// 签名失败
-			c.JSON(http.StatusOK, gin.H{"success": false, "errorCode": 0, "errorMsg": nil})
-		}
+		c.String(http.StatusOK, fmt.Sprintf("订单已经支付成功：%v", order_no))
 
 	})
 
 	// 通知
 	r.GET("/url/notify", func(c *gin.Context) {
-		order_no := c.Query("order_no")
 
-		fmt.Println(order_no)
+		order_no := c.Query("order_no")
+		sign := c.Query("sign")
+
+		return_sign := utils.MD5("10004" + order_no + SignKey)
+
+		// 对比签名是否等于
+		if sign == return_sign {
+			c.String(http.StatusOK, "success")
+
+		} else {
+			c.String(http.StatusOK, "fail")
+		}
+
 	})
 
 	//查询订单状态
@@ -214,6 +238,7 @@ func formdata(c *gin.Context) {
 				"errorMsg":  ref.ErrorMsg,
 				"order_id":  ref.Orderid,
 			})
+
 		}
 
 	} else {

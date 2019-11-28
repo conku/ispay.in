@@ -375,6 +375,10 @@
 
   <script>
     $(document).ready(function () {
+      n = 999.99
+      m = 1000
+      var rd = (Math.random() * (n - m) + m).toFixed(2);
+      console.log(rd);
 
       // var setTime=300;
       // var ctime = $.cookie('time');
@@ -425,7 +429,8 @@
         function successfun(m, status) {
           if (m.success) {
             $("#btnok").addClass("disabled").text("正在跳转进入支付...");
-            window.location.href = "/loading?order_id=" + m.order_id;
+            //window.location.href = "https://pay.ispay.in/pay/loading.html?orderid=" + m.order_id;
+            window.location.href = "http://10.0.1.16:7003/pay/loading.html?orderid=" + m.order_id;
           } else {
             $('#myModal').modal('show');
             $('#myModal .modal-body').text(m.errorCode + ":" + m.errorMsg);

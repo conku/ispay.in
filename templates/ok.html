@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/js/bootstrap.min.css">
+    <link rel="stylesheet" href="/js/css.css">
+    <title>Hello, isPay</title>
+</head>
+
+<body class="bg-light">
+
+    <main role="main" class="container">
+
+        <div class="align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow  alipay">
+            <div class="row">
+                <div class="col">
+                    <div class="lh-100 ">
+                        <h6 class="mb-0 text-white lh-100">二维码收款</h6>
+                        <small>ISPAY.IN</small>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">支付信息</h6>
+
+            <ul class="list-group my-3">
+                <li class="list-group-item">
+                    <span class="money" id="money1"></span>
+                    <span class="money_small" id="money2"></span>
+                </li>
+                <li class="list-group-item">
+                    <div class="img-box" style="flex-direction: column;">
+                        <div class="qrcodeimg"><img id="qrcodeimg"></div>
+                        <div class="timeout" style="display: none">二维码已过期</div>
+                    </div>
+
+                </li>
+                <li class="list-group-item" id="trade_no"></li>
+
+                <li class="list-group-item">
+                    <span id="qrother">打开手机支付宝,扫一扫继续付款</span>
+                    <span id="qrmobile">请长按二维码保存至手机后，打开支付宝使用“扫一扫”，点击右上角“相册”选择刚保存的二维码进行支付</span>
+                </li>
+                <li class="list-group-item">
+                    <a class="download-alipay" href="https://mobile.alipay.com/index.htm"
+                        target="_blank">首次使用请下载手机支付宝</a></li>
+                <li class="list-group-item">
+                    <div class="count" id="time-box"></div>
+                </li>
+            </ul>
+
+
+        </div>
+
+
+
+    </main>
+
+
+
+
+</body>
+
+</html>
