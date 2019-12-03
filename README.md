@@ -33,8 +33,8 @@ INPAY.IN（就付）数字货币收款支付系统
 | order_no   | string  | 是       | 订单号（唯一）列：20191118123424                           |
 | order_type | string  | 是       | 订单类型 支付宝：P901，微信：P902，云闪付：P904            |
 | amount     | float64 | 是       | 订单的金额,必须 300.00 保留 2 位小数点                     |
-| notify_url | string  | 是       | 订单通知地址                                               |
-| return_url | string  | 是       | 订单成功回调地址                                           |
+| notify_url | string  | 是       | 订单成功回调地址                                           |
+| return_url | string  | 是       | 订单通知返回地址                                           |
 | ip         | string  | 是       | 下单获取的 IP 地址                                         |
 | order_time | string  | 否       | 订单新建的时间                                             |
 | sign       | string  | 是       | md5(userid+order_no+order_type+amount+return_url+商户密钥) |
