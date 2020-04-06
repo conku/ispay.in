@@ -34,7 +34,7 @@ INPAY.IN（就付）数字货币收款支付系统
 | order_type | string  | 是       | 订单类型 支付宝：P901，微信：P902，云闪付：P904            |
 | amount     | float64 | 是       | 订单的金额,必须 300.00 保留 2 位小数点                     |
 | notify_url | string  | 是       | 订单成功回调地址                                           |
-| return_url | string  | 是       | 订单通知返回地址                                           |
+| return_url | string  | 是       | 订单成功返回地址                                           |
 | ip         | string  | 是       | 下单获取的 IP 地址                                         |
 | order_time | string  | 否       | 订单新建的时间                                             |
 | sign       | string  | 是       | md5(userid+order_no+order_type+amount+return_url+商户密钥) |
@@ -43,7 +43,21 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ```
 
-{"success": true, "errorCode": 0, "errorMsg": nil,"order_id": "{订单 ID}"}
+{
+    "success": true,
+    "errorCode": 0,
+    "errorMsg": nil,
+    "order_id":   10000,       //订单ID
+    "url": "跳转地址",
+}
+
+SDK
+{
+    "success": true,
+    "errorCode": 0,
+    "order_id":   10000,       //订单ID
+    "data": "PDDSDK支付代码",
+}
 
 ```
 
@@ -57,106 +71,11 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ---
 
-### 方法一，直接跳转出码页面 html
-
-下单成功后
-
-地址说明： https://pay.ispay.in/transfer/{订单ID}
-
-请求方式：GET，跳转
-
----
-
-### 方法二，跟踪订单状态 （建议第一种方式）
-
-调用地址：https://pay.ispay.in/query/{订单ID}
-
-请求方式：GET
-
-返回类型：JSON
-
-返回成功
-
-```
-
-{"success": true, "errorCode": 0, "errorMsg": nil,"state":"{订单状态}"}
-
-```
-
-| 订单状态 | 类型 | 状态 | 描述           |
-| -------- | :--- | :--- | :------------- |
-| state    | int  | 1    | 已接单、未出码 |
-| state    | int  | 2    | 已接单、未出码 |
-| state    | int  | 5    | 已接单、已出码 |
-| state    | int  | 8    | 已付款、待确认 |
-| state    | int  | 9    | 已确认完成支付 |
-
-```
-
-{
-    "success": true,
-    "errorCode": 0,
-    "errorMsg": nil,
-     "state":   5,       //订单状态
-    "order":{
-         "qrcode": "https://qr.alipay.com/xxxxxx",                           //二维码地址
-         "imgtext": imgtext,                                                 //二维码原始图片base64
-         "alipayuid": "",                                                    //阿里USERID
-         "amount": 500,                                                      //订单的价格
-         "sn":     "424843497502158848",                                     //订单编号
-         "timeout": 900，                                                    //订单时间
-    }
-}
-
-```
-
-返回失败
-
-```
-
-{"success": false, "errorCode": 0, "errorMsg": "订单不存在"}
-
-```
-
----
-
-### 订单状态为 5，返回订单信息、金额、二维码
-
-请求方式：GET
-
-调用地址：https://pay.ispay.in/qrcode/{订单ID}
-
-请求方式：GET
-
-返回类型：JSON
-
-返回成功
-
-```
-
-{
-    "success": true,
-    "errorCode": 0,
-    "errorMsg": nil,
-    "order":{
-         "state":   5,                  //订单状态
-         "qrcode":  pays.Urls,          //二维码地址
-         "imgtext": imgtext,            //二维码原始图片base64
-         "amount":  order.Amount,       //订单的价格
-         "sn":      order.OrderSN,      //订单编号
-         "timeout": order.OrderTimeout, //订单时间
-    }
-}
-
-```
-
----
-
 ### 订单号查询
 
 请求方式：GET
 
-调用地址：https://pay.ispay.in/order/:{商户ID}/{订单号}/{md5}
+调用地址：https://pay.ispay.in/order/{商户ID}/{订单号}/{md5}
 
 请求方式：GET
 
@@ -191,9 +110,9 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ---
 
-### 回调接口 {notify_url}
+### 回调通知接口 {notify_url}
 
-订单回调地址： notify_url
+订单回调通知地址： notify_url
 
 调用地址：{notify_url}?order_no={order_no}&amount={amount}&state={state}&sign={sign}
 
