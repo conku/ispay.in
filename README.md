@@ -18,7 +18,7 @@ INPAY.IN（就付）数字货币收款支付系统
 
 调用地址：https://pay.ispay.in/gateway
 
-调用地址：https://payment.ispay.in/v2/gateway
+调用地址：http://payment.ispay.in/v2/gateway
 
 请求方式：POST
 
