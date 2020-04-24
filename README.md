@@ -31,6 +31,7 @@ INPAY.IN（就付）数字货币收款支付系统
 | amount     | float64 | 是       | 订单的金额,必须 300.00 保留 2 位小数点                     |
 | notify_url | string  | 是       | 订单成功回调地址                                           |
 | return_url | string  | 是       | 订单成功返回地址                                           |
+| sign       | string  | 是       | 签名MD5 请查看签名说明                                          |
 
 
 
@@ -56,16 +57,7 @@ INPAY.IN（就付）数字货币收款支付系统
     "errorMsg": nil,
     "order":{
          "sn":             "20191118123424",               //订单编号
-         "state":         5,                          //订单状态
-         "qrcode":        "",                         //二维码地址
-         "imgtext":       "",                         //二维码原始图片base64
-         "notifyurl":     "http://.../notifyurl/id",   //回调地址
-         "returnurl":     "http://.../return/id",     //返回地址
-         "returning":     true,                       //是否回调
-         "amount":        2000.00,                     //订单的价格
-         "ip":            "127.0.0.1",                   //订单编号
-         "paytype":       "P901",                     //支付的类型
-         "create_time":   "2019-10-15 17:04:00",       //订单时间
+         。。。。。。。。。。。
     }
 }
 
