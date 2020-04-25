@@ -106,6 +106,7 @@ fail
 1、参数名ASCII码从小到大排序（字典序）
 2、参数名区分大小写
 3、如果参数的值为空也参与签名
+4、所有参数url编码
 
 第二步，在stringA最后拼接上
 $stringSignTemp = $stringA ."&key=192006250b4c09247ec02edce69f6a2d"; // 拼接商户密钥
