@@ -16,7 +16,6 @@ INPAY.IN（就付）数字货币收款支付系统
 
 ### 订单提交
 
-调用地址：https://pay.ispay.in/gateway
 
 调用地址：http://payment.ispay.in/v2/gateway
 
@@ -27,14 +26,48 @@ INPAY.IN（就付）数字货币收款支付系统
 | userid     | int     | 是       | 商户 ID                                                    |
 | subject    | string  | 否       | 订单标题                                                   |
 | order_sn   | string  | 是       | 订单号（唯一）列：20191118123424                           |
-| order_type | string  | 是       | 订单类型 支付宝：P909，微信：P902，云闪付：P904            |
+| order_type | string  | 是       | 订单类型 pdd,wepay,alipay            |
 | amount     | float64 | 是       | 订单的金额,必须 300.00 保留 2 位小数点                     |
 | notify_url | string  | 是       | 订单成功回调地址                                           |
 | return_url | string  | 是       | 订单成功返回地址                                           |
 | sign       | string  | 是       | 签名MD5 请查看签名说明                                          |
 
+### 返回JSON 
+
+| 名称       | 类型    | 是否必须 | 描述                                                       |
+| ---------- | :------ | :------- | :--------------------------------------------------------- |
+| success    | bool    | 是       | 返回true,false                                           |
+| errorCode  | int     | 是       | 错误代码                                                  |
+| order_id   | string  | 是       | 订单ID                          |
+| data       | string  | 否       | SDK支付代码（SDK模式）            |
+| url        | string  | 否       | URL跳转代码，                     |
+
+SDK
+```
+{
+    "success": true, 
+    "errorCode": 1,
+    "order_id": 10000, 
+    "data":"code"
+ }
+ 
+
+```
+
+ URL
+```
 
 
+ {
+    "success": true, 
+    "errorCode": 1,
+    "order_id": 10000, 
+    "url": "https://github.com/conku/ispay.in"
+ }
+
+```
+
+---
 ### 订单号查询
 
 请求方式：GET
@@ -111,4 +144,6 @@ fail
 第二步，在stringA最后拼接上
 $stringSignTemp = $stringA ."&key=192006250b4c09247ec02edce69f6a2d"; // 拼接商户密钥
 $sign = md5($stringSignTemp); // md5加密
+
+
 
